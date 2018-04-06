@@ -1,0 +1,33 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+
+<h2 align="center">Contest List</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total Questions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in contests %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="{{ c.id }}/">{{ c.name }}</a></td>
+                <td>{{ c.contest_date }}</td>
+                <td>A</td>
+                <td>{{ c.question_set.count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

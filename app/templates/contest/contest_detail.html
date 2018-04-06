@@ -1,0 +1,29 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+
+<h2 align="center">{{ contest_name }} - Problems List</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Sl</th>
+                <th>Name</th>
+                <th>Point</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for q in questions %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href="/question/{{ q.id }}/">{{ q.name }}</a></td>
+                <td>{{ q.point }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+
+{% endblock %}

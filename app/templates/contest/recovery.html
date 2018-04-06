@@ -1,0 +1,19 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+<h2>Recover password</h2>
+{% for m in messages %}
+<p style="color: #ff731e; font-weight: bold;">{{ m.message }}</p>
+{% endfor %}
+<form action="." method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id">Recovery ID:</label>
+        <input type="text" name="recovery_id" class="form-control" id="" placeholder="Enter secret recovery ID">
+    </div>
+
+    <button type="submit" class="btn btn-success">Recover</button>
+
+</form>
+
+{% endblock %}

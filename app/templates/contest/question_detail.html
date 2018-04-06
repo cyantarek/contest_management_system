@@ -1,0 +1,52 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">Question Details: {{ user.user_id }}</div>
+    <div class="panel-body">
+        {% for m in messages %}
+        <p style="color: #ff731e; font-weight: bold;">{{ m.message }}</p>
+        <br>
+        {% endfor %}
+        <h3>Question Name: {{ question.name }}</h3>
+        <br>
+        <h5> {{ question.body }}</h5>
+        <hr>
+        <h3>Input</h3>
+        <br>
+        <h5> {{ question.input }}</h5>
+        <hr>
+        <h3>Output</h3>
+        <br>
+        <h5> {{ question.output }}</h5>
+        <hr>
+        <h3>Samples</h3>
+        <br>
+        <h5> {{ question.samples }}</h5>
+        <hr>
+        <h3>Submit Output Solution</h3>
+        <br>
+        <form action="/submit_solution/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            Output:
+            <input type="text" name="solution">
+            <br>
+            <br>
+            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+        </form>
+
+        <h3>Submit File Solution</h3>
+        <br>
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="solution_file">
+            <br>
+            <input type="submit" class="btn btn-primary" value="Submit">
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+        </form>
+        <hr>
+
+    </div>
+</div>
+{% endblock %}

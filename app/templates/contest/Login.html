@@ -1,0 +1,30 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+<h2>Log In</h2>
+{% for m in messages %}
+<p style="color: #ff731e; font-weight: bold;">{{ m.message }}</p>
+{% endfor %}
+<form action="." method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id">ID:</label>
+        <input type="number" name="id" class="form-control" id="" placeholder="Enter ID">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" name="password" class="form-control" id="" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+    <hr>
+    <p>Or</p>
+    <div><a href="/registration/">Create an account</a></div>
+    <div><a href="/recovery/">Forgot password?</a></div>
+
+</form>
+
+
+{% endblock %}

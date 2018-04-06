@@ -1,0 +1,48 @@
+{% extends 'contest/base.html' %}
+
+{% block content %}
+<h2>Registration</h2>
+{% for m in messages %}
+<p style="color: #ff731e; font-weight: bold;">{{ m.message }}</p>
+{% endfor %}
+<form action="." method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="FName">First Name:</label>
+        <input type="text" name="f_name" class="form-control" id="" placeholder="First Name" required>
+    </div>
+    <div class="form-group">
+        <label for="LName">Last Name:</label>
+        <input type="text" name="l_name" class="form-control" id="" placeholder="Last Name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Recovery ID:</label>
+        <input type="text" name="recovery_id" class="form-control" id="" placeholder="Enter secret Id for recovery" required>
+    </div>
+    <div class="form-group">
+        <label for="Id">Id:</label>
+        <input type="text" name="id" class="form-control" id="" placeholder="Enter University ID" required>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" name="password1" class="form-control" id="" placeholder="Enter password" required>
+    </div>
+    <div class="form-group">
+        <label for="pwd">Confirm Password:</label>
+        <input type="password" name="password2" class="form-control" id="" placeholder="Re-Enter password" required>
+    </div>
+    <div class="form-group">
+        <label for="Usertype">User Type:</label>
+        <select name="user_type" required>
+            <option value="User">User</option>
+            <option value="Judge">Judge</option>
+            <option value="Participants">Participants</option>
+        </select>
+    </div>
+    <button type="Registration" class="btn btn-success">Signup</button>
+    <div>
+        <a href="/login/">Already have an account</a>
+    </div>
+</form>
+
+{% endblock %}
